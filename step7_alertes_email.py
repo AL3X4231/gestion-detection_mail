@@ -22,9 +22,9 @@ def send_email(to_email, subject, body, from_email, password):
         server.login(from_email, password)
         server.sendmail(from_email, to_email, msg.as_string())
         server.quit()
-        print(f"✅ Email envoyé avec succès à {to_email} !")
+        print(f"[SUCCES] Email envoyé avec succès à {to_email} !")
     except Exception as e:
-        print(f"❌ Erreur lors de l'envoi de l'email à {to_email} : {e}")
+        print(f"[ERREUR] Erreur lors de l'envoi de l'email à {to_email} : {e}")
 
 def generer_contenu_mail(row):
     """
@@ -53,7 +53,7 @@ def generer_contenu_mail(row):
         </div>
         
         <h3>Description :</h3>
-        <p style="background-color: #f1f1f1; padding: 10px; border-radius: 5px;"><i>{row['Description']}</i></p>
+        <p style="background-color: #f1f1f1; padding: 10px; border-radius: 5px;"><i>{row.get('Description', 'Description non fournie')}</i></p>
         
         <br>
         <p>Veuillez consulter le bulletin ANSSI complet pour les recommandations détaillées et mettre à jour vos systèmes dans les plus brefs délais.</p>
